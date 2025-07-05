@@ -1,0 +1,119 @@
+[timer,barrows_drain_timer]
+if (inzone(0_55_151_0_0, 3_55_151_63_63, coord) = false) {
+    mes("[debug] not at barrows, clearing drain timer");
+    cleartimer(barrows_drain_timer);
+    return;
+}
+// TODO: I'm not sure if this is queued or not, on osrs you can get drained after leaving the crypt but i'm not sure if it is just the timer running late
+// or the queue running
+mes("[debug] queueing drain");
+queue(barrows_drain, 0);
+
+[queue,barrows_drain]
+def_int $drain = 8;
+
+if (%barrows_killed_ahrim = 1) {
+    $drain = calc($drain + 1);
+}
+if (%barrows_killed_dharok = 1) {
+    $drain = calc($drain + 1);
+}
+if (%barrows_killed_guthan = 1) {
+    $drain = calc($drain + 1);
+}
+if (%barrows_killed_karil = 1) {
+    $drain = calc($drain + 1);
+}
+if (%barrows_killed_torag = 1) {
+    $drain = calc($drain + 1);
+}
+if (%barrows_killed_verac = 1) {
+    $drain = calc($drain + 1);
+}
+stat_sub(prayer, $drain, 0);
+mes("[debug] drained prayer by: <tostring($drain)>");
+// It seems like there was no barrows nodnod on old videos? Was it broken? The interface seems to support it
+// Seems to be working here: https://www.youtube.com/watch?v=YMVHXp1WRqI
+// But not here: https://www.youtube.com/watch?v=qwho4bNFMds
+// Maybe it is a low detail thing?
+
+[mapzone,0_55_151]
+// Assert that the drain timer is running
+// Assert that minimap is hidden
+// Add overlay
+// Add camera shake if at catacombs and
+mes("[debug] entered barrows crypts/catacombs");
+settimer(barrows_drain_timer, ^barrows_drain_timer_interval);
+
+if (~barrows_collapsing = true & inzone(0_55_151_0_0, 0_55_151_63_63, coord) = true) {
+    cam_shake(0, 5, 0, 0);
+}
+@music_playbyregion(coord);
+
+[mapzoneexit,0_55_151]
+// Remove drain timer
+// Unhide minimap
+// Remove overlay
+mes("[debug] exited barrows crypts/catacombs");
+cleartimer(barrows_drain_timer);
+cam_reset;
+
+[proc,barrows_full_reset]
+// OSRS resets by writing to the barrows varp 6 times in a row (likely a result of setting multiple varbits to 0), 
+// we'll just be a tad be smarter and set the basevar to 0
+%barrows = 0;
+// osrs writes to this varp 9 times
+%barrows_kills = 0;
+mes("[debug] barrows full reset");
+~barrows_catacombs_randomize;
+~barrows_entrance_randomize;
+
+[proc,barrows_collapsing]()(boolean)
+if (testbit(%barrows, ^barrows_collapsing_bit) = 1) {
+    return (true);
+} else {
+    return (false);
+}
+
+[proc,barrows_entrance_get]()(int)
+return (getbit_range(%barrows, ^barrows_entrance_startbit, ^barrows_entrance_endbit));
+
+[proc,barrows_entrance_randomize]
+mes("[debug] barrows entrance randomize");
+%barrows = setbit_range_toint(%barrows, random(6), ^barrows_entrance_startbit, ^barrows_entrance_endbit);
+
+[proc,barrows_spawn_brother](npc $npc, string $say)
+// TODO: barrows brothers do not check if you're in combat with something else
+// TODO: when spawning in a crypt, check if a brother is already spawned
+
+if ($npc = barrows_ahrim | $npc = barrows_karil) {
+    ~barrows_spawn_npc($npc, ^barrows_brother_lifetime, applayer2);
+} else {
+    ~barrows_spawn_npc($npc, ^barrows_brother_lifetime, opplayer2);
+}
+hint_npc(npc_uid);
+
+if (~string_isnullorempty($say) = false) {
+    npc_say($say);
+}
+
+[proc,barrows_spawn_npc](npc $npc, int $duration, npc_mode $mode)
+// Spawn npc
+// Set player combatant as the npc
+// Set npc combatant as the player
+
+npc_add(map_findsquare(coord, 0, 2, ^map_findsquare_lineofwalk), $npc, $duration);
+// barrows npcs 'steal' your combat target
+%aggressive_npc = npc_uid;
+%npc_aggressive_player = uid;
+npc_setmode($mode);
+
+[proc,barrows_increment_kc]
+if (npc_findhero = ^false | p_finduid(uid) = false) {
+    return;
+}
+// Capped at 1000, all brothers total up to 656
+%barrows_killed_monster = min(1000, calc(%barrows_killed_monster + nc_vislevel(npc_type)));
+// Capped at 65535 by the varbit
+%barrows_killed_count = min(0xFFFF, calc(%barrows_killed_count + 1));
+mes("[debug] killed_monster: <tostring(%barrows_killed_monster)>, kill_count: <tostring(%barrows_killed_count)>");

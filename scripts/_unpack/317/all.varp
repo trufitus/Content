@@ -449,15 +449,6 @@ type=int
 [varp_451]
 type=int
 
-[barrows]
-type=int
-
-[barrows_kills]
-type=int
-
-[worn_set]
-type=int
-
 [zombie_ogre]
 type=int
 

@@ -687,3 +687,5 @@ settimer(mercenary_check, 25);
 [mapzone,0_52_152] @music_playbyregion(coord);
 
 [mapzone,0_52_153] @music_playbyregion(coord);
+
+[mapzone,0_55_51] @music_playbyregion(coord);

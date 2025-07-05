@@ -1,0 +1,21 @@
+[ai_despawn,barrows_torag]
+if (finduid(%npc_aggressive_player) = false) {
+    return;
+}
+mes("We'll finish this later...");
+
+[ai_timer,barrows_torag]
+if (finduid(%npc_aggressive_player) = false) {
+    npc_del;
+    return;
+}
+
+[ai_queue3,barrows_torag]
+if (p_finduid(%npc_aggressive_player) = false) {
+    return;
+}
+if (%barrows_killed_torag = 0) {
+    %barrows_killed_torag = 1;
+    ~barrows_increment_kc;
+}
+~npc_default_death;

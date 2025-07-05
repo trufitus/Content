@@ -1407,3 +1407,13 @@ data=name,Venture2
 table=musicregion
 data=mapsquare,0_52_153_0_0
 data=name,Venture2
+
+[musicregion_55_51]
+table=musicregion
+data=mapsquare,0_55_51_0_0
+data=name,Dance of the Undead
+
+[musicregion_55_151]
+table=musicregion
+data=mapsquare,0_55_151_0_0
+data=name,Dangerous Way

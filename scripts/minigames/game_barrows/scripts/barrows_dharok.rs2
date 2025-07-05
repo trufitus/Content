@@ -1,0 +1,21 @@
+[ai_despawn,barrows_dharok]
+if (finduid(%npc_aggressive_player) = false) {
+    return;
+}
+mes("We'll finish this later...");
+
+[ai_timer,barrows_dharok]
+if (finduid(%npc_aggressive_player) = false) {
+    npc_del;
+    return;
+}
+
+[ai_queue3,barrows_dharok]
+if (p_finduid(%npc_aggressive_player) = false) {
+    return;
+}
+if (%barrows_killed_dharok = 0) {
+    %barrows_killed_dharok = 1;
+    ~barrows_increment_kc;
+}
+~npc_default_death;

@@ -1,0 +1,12 @@
+[barrows]
+type=int
+transmit=yes
+scope=perm
+
+[barrows_kills]
+type=int
+transmit=yes
+scope=perm
+
+[worn_set]
+type=int

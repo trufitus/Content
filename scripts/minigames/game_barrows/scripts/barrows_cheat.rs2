@@ -1,0 +1,62 @@
+[debugproc,barrowsreset]
+if (p_finduid(uid) = false) {
+    return;
+}
+~barrows_full_reset;
+def_int $barrows_entrance = ~barrows_entrance_get;
+mes("Randomized barrows, entrance: <tostring($barrows_entrance)>");
+
+[debugproc,barrowspuzzle]
+~barrows_open_puzzle;
+
+[debugproc,barrowsoverlay]
+if (p_finduid(uid) = false) {
+    return;
+}
+if_openmain(barrows_overlay);
+
+// if_setmodel(barrows_overlay:dharok, 6738);
+// if_setanim(barrows_overlay:dharok, seq_2086);
+
+// if_setmodel(barrows_overlay:guthan, 6739);
+// if_setanim(barrows_overlay:guthan, seq_2086);
+
+// if_setmodel(barrows_overlay:karil, 6740);
+// if_setanim(barrows_overlay:karil, seq_2086);
+
+// if_setmodel(barrows_overlay:torag, 6741);
+// if_setanim(barrows_overlay:torag, seq_2086);
+
+// if_setmodel(barrows_overlay:verac, 6742);
+// if_setanim(barrows_overlay:verac, seq_2086);
+
+[debugproc,barrowsnodmodel]
+if_setmodel(barrows_overlay:ahrim, 6737);
+mes("nodmodel");
+
+[debugproc,barrowsnodnod]
+if_setanim(barrows_overlay:ahrim, seq_2085);
+mes("nodnod");
+
+[debugproc,barrowsloot]
+if (p_finduid(uid) = false) {
+    return;
+}
+def_int $roll = 1;
+
+while ($roll < 50) {
+    ~barrows_loot;
+    p_delay(1);
+    $roll = calc($roll + 1);
+
+    def_int $slot = 0;
+
+    while ($slot < 8) {
+        def_obj $obj = inv_getobj(inv, $slot);
+
+        if ($obj ! null) {
+            ~bank_deposit_request(inv, $obj, inv_getnum(inv, $slot), $slot);
+        }
+        $slot = calc($slot + 1);
+    }
+}

@@ -1045,3 +1045,11 @@ table=music
 data=name,Zealot
 data=playbutton,music:zealot
 data=unlock,6,12
+
+[music_Dance_of_the_Undead]
+table=music
+data=name,Dance of the Undead
+
+[music_Dangeous_Way]
+table=music
+data=name,Dangerous Way
