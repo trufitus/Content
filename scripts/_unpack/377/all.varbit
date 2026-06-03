@@ -3413,183 +3413,183 @@ basevar=xplamp
 startbit=18
 endbit=31
 
-[varbit_700]
-basevar=farming_tree_varp
+[farming_tree_varbit_1]
+basevar=farming_varp_1
 startbit=0
 endbit=7
 
-[varbit_701]
-basevar=farming_tree_varp
+[farming_tree_varbit_2]
+basevar=farming_varp_1
 startbit=8
 endbit=15
 
-[varbit_702]
-basevar=farming_tree_varp
+[farming_tree_varbit_3]
+basevar=farming_varp_1
 startbit=16
 endbit=23
 
-[varbit_703]
-basevar=farming_tree_varp
+[farming_tree_varbit_4]
+basevar=farming_varp_1
 startbit=24
 endbit=31
 
-[varbit_704]
-basevar=farming_fruit_tree_varp
+[farming_fruit_tree_varbit_1]
+basevar=farming_varp_2
 startbit=0
 endbit=7
 
-[varbit_705]
-basevar=farming_fruit_tree_varp
+[farming_fruit_tree_varbit_2]
+basevar=farming_varp_2
 startbit=8
 endbit=15
 
-[varbit_706]
-basevar=farming_fruit_tree_varp
+[farming_fruit_tree_varbit_3]
+basevar=farming_varp_2
 startbit=16
 endbit=23
 
-[varbit_707]
-basevar=farming_fruit_tree_varp
+[farming_fruit_tree_varbit_4]
+basevar=farming_varp_2
 startbit=24
 endbit=31
 
-[varbit_708]
-basevar=farming_allotment_varp_1
+[farming_veg_varbit_1]
+basevar=farming_varp_3
 startbit=0
 endbit=7
 
-[varbit_709]
-basevar=farming_allotment_varp_1
+[farming_veg_varbit_2]
+basevar=farming_varp_3
 startbit=8
 endbit=15
 
-[varbit_710]
-basevar=farming_allotment_varp_1
+[farming_veg_varbit_3]
+basevar=farming_varp_3
 startbit=16
 endbit=23
 
-[varbit_711]
-basevar=farming_allotment_varp_1
+[farming_veg_varbit_4]
+basevar=farming_varp_3
 startbit=24
 endbit=31
 
-[varbit_712]
-basevar=farming_allotment_varp_2
+[farming_veg_varbit_5]
+basevar=farming_varp_4
 startbit=0
 endbit=7
 
-[varbit_713]
-basevar=farming_allotment_varp_2
+[farming_veg_varbit_6]
+basevar=farming_varp_4
 startbit=8
 endbit=15
 
-[varbit_714]
-basevar=farming_allotment_varp_2
+[farming_veg_varbit_7]
+basevar=farming_varp_4
 startbit=16
 endbit=23
 
-[varbit_715]
-basevar=farming_allotment_varp_2
+[farming_veg_varbit_8]
+basevar=farming_varp_4
 startbit=24
 endbit=31
 
-[varbit_716]
-basevar=farming_hops_varp
+[farming_hops_varbit_1]
+basevar=farming_varp_5
 startbit=0
 endbit=7
 
-[varbit_717]
-basevar=farming_hops_varp
+[farming_hops_varbit_2]
+basevar=farming_varp_5
 startbit=8
 endbit=15
 
-[varbit_718]
-basevar=farming_hops_varp
+[farming_hops_varbit_3]
+basevar=farming_varp_5
 startbit=16
 endbit=23
 
-[varbit_719]
-basevar=farming_hops_varp
+[farming_hops_varbit_4]
+basevar=farming_varp_5
 startbit=24
 endbit=31
 
-[varbit_720]
-basevar=farming_special_tree_varp
+[farming_spirit_tree_varbit_1]
+basevar=farming_varp_6
 startbit=0
 endbit=5
 
-[spirit_tree_sarim_compost_varbit]
-basevar=varp_514
+[farming_compost_varbit_spirit_tree_1]
+basevar=farming_varp_6
 startbit=6
 endbit=7
 
-[varbit_722]
-basevar=farming_special_tree_varp
+[farming_spirit_tree_varbit_2]
+basevar=farming_varp_6
 startbit=8
 endbit=13
 
-[spirit_tree_etc_compost_varbit]
-basevar=varp_514
+[farming_compost_varbit_spirit_tree_2]
+basevar=farming_varp_6
 startbit=14
 endbit=15
 
-[varbit_724]
-basevar=farming_special_tree_varp
+[farming_spirit_tree_varbit_3]
+basevar=farming_varp_6
 startbit=16
 endbit=21
 
-[spirit_tree_brimhaven_compost_varbit]
-basevar=varp_514
+[farming_compost_varbit_spirit_tree_3]
+basevar=farming_varp_6
 startbit=22
 endbit=23
 
-[varbit_726]
-basevar=farming_special_tree_varp
+[farming_calquat_tree_varbit]
+basevar=farming_varp_6
 startbit=24
 endbit=29
 
-[calquat_compost_varbit]
-basevar=farming_special_tree_varp
+[farming_compost_varbit_calquat_tree]
+basevar=farming_varp_6
 startbit=30
 endbit=31
 
-[varbit_728]
-basevar=farming_flower_varp
+[farming_flower_varbit_1]
+basevar=farming_varp_7
 startbit=0
 endbit=7
 
-[varbit_729]
-basevar=farming_flower_varp
+[farming_flower_varbit_2]
+basevar=farming_varp_7
 startbit=8
 endbit=15
 
-[varbit_730]
-basevar=farming_flower_varp
+[farming_flower_varbit_3]
+basevar=farming_varp_7
 startbit=16
 endbit=23
 
-[varbit_731]
-basevar=farming_flower_varp
+[farming_flower_varbit_4]
+basevar=farming_varp_7
 startbit=24
 endbit=31
 
-[varbit_732]
-basevar=farming_bush_varp
+[farming_bush_varbit_1]
+basevar=farming_varp_8
 startbit=0
 endbit=7
 
-[varbit_733]
-basevar=farming_bush_varp
+[farming_bush_varbit_2]
+basevar=farming_varp_8
 startbit=8
 endbit=15
 
-[varbit_734]
-basevar=farming_bush_varp
+[farming_bush_varbit_3]
+basevar=farming_varp_8
 startbit=16
 endbit=23
 
-[varbit_735]
-basevar=farming_bush_varp
+[farming_bush_varbit_4]
+basevar=farming_varp_8
 startbit=24
 endbit=31
 
@@ -3613,288 +3613,288 @@ basevar=farming_varp_9
 startbit=24
 endbit=31
 
-[varbit_740]
-basevar=varp_511
+[farming_compost_bin_varbit_1]
+basevar=farming_varp_10
 startbit=0
 endbit=7
 
-[varbit_741]
-basevar=varp_511
+[farming_compost_bin_varbit_2]
+basevar=farming_varp_10
 startbit=8
 endbit=15
 
-[varbit_742]
-basevar=varp_511
+[farming_compost_bin_varbit_3]
+basevar=farming_varp_10
 startbit=16
 endbit=23
 
-[varbit_743]
-basevar=varp_511
+[farming_compost_bin_varbit_4]
+basevar=farming_varp_10
 startbit=24
 endbit=31
 
-[varbit_744]
-basevar=varp_512
+[farming_cactus_varbit]
+basevar=farming_varp_11
 startbit=0
 endbit=5
 
-[cactus_compost_varbit]
-basevar=varp_512
+[farming_compost_varbit_cactus]
+basevar=farming_varp_11
 startbit=6
 endbit=7
 
-[varbit_746]
-basevar=varp_512
+[farming_mushroom_varbit]
+basevar=farming_varp_11
 startbit=8
 endbit=13
 
-[mushroom_compost_varbit]
-basevar=varp_512
+[farming_compost_varbit_mushroom]
+basevar=farming_varp_11
 startbit=14
 endbit=15
 
-[varbit_748]
-basevar=varp_512
+[farming_belladonna_varbit]
+basevar=farming_varp_11
 startbit=16
 endbit=21
 
-[belladonna_compost_varbit]
-basevar=varp_512
+[farming_compost_varbit_belladona]
+basevar=farming_varp_11
 startbit=22
 endbit=23
 
-[varbit_750]
-basevar=varp_512
+[farming_growth_counter]
+basevar=farming_varp_11
 startbit=24
 endbit=31
 
-[varbit_751]
-basevar=varp_513
+[farming_compost_varbit_veg_1]
+basevar=farming_varp_12
 startbit=0
 endbit=1
 
-[varbit_752]
-basevar=varp_513
+[farming_compost_varbit_veg_2]
+basevar=farming_varp_12
 startbit=2
 endbit=3
 
-[varbit_753]
-basevar=varp_513
+[farming_compost_varbit_veg_3]
+basevar=farming_varp_12
 startbit=4
 endbit=5
 
-[varbit_754]
-basevar=varp_513
+[farming_compost_varbit_veg_4]
+basevar=farming_varp_12
 startbit=6
 endbit=7
 
-[varbit_755]
-basevar=varp_513
+[farming_compost_varbit_veg_5]
+basevar=farming_varp_12
 startbit=8
 endbit=9
 
-[varbit_756]
-basevar=varp_513
+[farming_compost_varbit_veg_6]
+basevar=farming_varp_12
 startbit=10
 endbit=11
 
-[varbit_757]
-basevar=varp_513
+[farming_compost_varbit_veg_7]
+basevar=farming_varp_12
 startbit=12
 endbit=13
 
-[varbit_758]
-basevar=varp_513
+[farming_compost_varbit_veg_8]
+basevar=farming_varp_12
 startbit=14
 endbit=15
 
-[varbit_759]
-basevar=varp_513
+[farming_compost_varbit_hops_1]
+basevar=farming_varp_12
 startbit=16
 endbit=17
 
-[varbit_760]
-basevar=varp_513
+[farming_compost_varbit_hops_2]
+basevar=farming_varp_12
 startbit=18
 endbit=19
 
-[varbit_761]
-basevar=varp_513
+[farming_compost_varbit_hops_3]
+basevar=farming_varp_12
 startbit=20
 endbit=21
 
-[varbit_762]
-basevar=varp_513
+[farming_compost_varbit_hops_4]
+basevar=farming_varp_12
 startbit=22
 endbit=23
 
-[varbit_763]
-basevar=varp_513
+[farming_compost_varbit_flower_1]
+basevar=farming_varp_12
 startbit=24
 endbit=25
 
-[varbit_764]
-basevar=varp_513
+[farming_compost_varbit_flower_2]
+basevar=farming_varp_12
 startbit=26
 endbit=27
 
-[varbit_765]
-basevar=varp_513
+[farming_compost_varbit_flower_3]
+basevar=farming_varp_12
 startbit=28
 endbit=29
 
-[varbit_766]
-basevar=varp_513
+[farming_compost_varbit_flower_4]
+basevar=farming_varp_12
 startbit=30
 endbit=31
 
-[varbit_767]
-basevar=varp_514
+[farming_compost_varbit_tree_1]
+basevar=farming_varp_13
 startbit=0
 endbit=1
 
-[varbit_768]
-basevar=varp_514
+[farming_compost_varbit_tree_2]
+basevar=farming_varp_13
 startbit=2
 endbit=3
 
-[varbit_769]
-basevar=varp_514
+[farming_compost_varbit_tree_3]
+basevar=farming_varp_13
 startbit=4
 endbit=5
 
-[varbit_770]
-basevar=varp_514
+[farming_compost_varbit_tree_4]
+basevar=farming_varp_13
 startbit=6
 endbit=7
 
-[varbit_771]
-basevar=varp_514
+[farming_compost_varbit_fruit_tree_1]
+basevar=farming_varp_13
 startbit=8
 endbit=9
 
-[varbit_772]
-basevar=varp_514
+[farming_compost_varbit_fruit_tree_2]
+basevar=farming_varp_13
 startbit=10
 endbit=11
 
-[varbit_773]
-basevar=varp_514
+[farming_compost_varbit_fruit_tree_3]
+basevar=farming_varp_13
 startbit=12
 endbit=13
 
-[varbit_774]
-basevar=varp_514
+[farming_compost_varbit_fruit_tree_4]
+basevar=farming_varp_13
 startbit=14
 endbit=15
 
-[varbit_775]
-basevar=varp_514
+[farming_compost_varbit_bush_1]
+basevar=farming_varp_13
 startbit=16
 endbit=17
 
-[varbit_776]
-basevar=varp_514
+[farming_compost_varbit_bush_2]
+basevar=farming_varp_13
 startbit=18
 endbit=19
 
-[varbit_777]
-basevar=varp_514
+[farming_compost_varbit_bush_3]
+basevar=farming_varp_13
 startbit=20
 endbit=21
 
-[varbit_778]
-basevar=varp_514
+[farming_compost_varbit_bush_4]
+basevar=farming_varp_13
 startbit=22
 endbit=23
 
-[varbit_779]
-basevar=varp_514
+[farming_nature_amulet_patch]
+basevar=farming_varp_13
 startbit=24
 endbit=31
 
-[varbit_780]
-basevar=varp_515
+[farming_herb_varbit_1]
+basevar=farming_varp_14
 startbit=0
 endbit=7
 
-[varbit_781]
-basevar=varp_515
+[farming_herb_varbit_2]
+basevar=farming_varp_14
 startbit=8
 endbit=15
 
-[varbit_782]
-basevar=varp_515
+[farming_herb_varbit_3]
+basevar=farming_varp_14
 startbit=16
 endbit=23
 
-[varbit_783]
-basevar=varp_515
+[farming_herb_varbit_4]
+basevar=farming_varp_14
 startbit=24
 endbit=31
 
-[varbit_784]
-basevar=varp_516
+[farming_gardener_varbit]
+basevar=farming_varp_15
 startbit=0
 endbit=23
 
-[varbit_785]
-basevar=varp_516
+[farming_compost_varbit_herb_1]
+basevar=farming_varp_15
 startbit=24
 endbit=25
 
-[varbit_786]
-basevar=varp_516
+[farming_compost_varbit_herb_2]
+basevar=farming_varp_15
 startbit=26
 endbit=27
 
-[varbit_787]
-basevar=varp_516
+[farming_compost_varbit_herb_3]
+basevar=farming_varp_15
 startbit=28
 endbit=29
 
-[varbit_788]
-basevar=varp_516
+[farming_compost_varbit_herb_4]
+basevar=farming_varp_15
 startbit=30
 endbit=31
 
-[varbit_789]
-basevar=varp_501
+[farming_patch_state]
+basevar=farming_state_temp
 startbit=0
 endbit=7
 
-[varbit_790]
-basevar=varp_501
+[farming_current_patch]
+basevar=farming_state_temp
 startbit=16
 endbit=23
 
-[varbit_791]
-basevar=varp_501
+[farming_catchup_enabled]
+basevar=farming_state_temp
 startbit=24
 endbit=24
 
-[varbit_792]
-basevar=varp_501
+[farming_patch_protected]
+basevar=farming_state_temp
 startbit=26
 endbit=26
 
-[varbit_793]
-basevar=varp_501
+[farming_notify_amulet]
+basevar=farming_state_temp
 startbit=27
 endbit=27
 
-[varbit_794]
-basevar=varp_501
+[farming_patch_updated]
+basevar=farming_state_temp
 startbit=28
 endbit=28
 
 [varbit_795]
-basevar=varp_501
+basevar=farming_state_temp
 startbit=29
 endbit=29
 
 [varbit_796]
-basevar=varp_501
+basevar=farming_state_temp
 startbit=30
 endbit=31
 
@@ -4268,7 +4268,7 @@ basevar=forget_puzzle_var2
 startbit=29
 endbit=29
 
-[varbit_871]
+[farming_old_patch_state]
 basevar=farming_state_temp_3
 startbit=0
 endbit=7
@@ -4973,63 +4973,63 @@ basevar=varp_536
 startbit=30
 endbit=30
 
-[varbit_1016]
-basevar=varp_528
+[farming_protection_start]
+basevar=farming_state_temp_2
 startbit=8
 endbit=15
 
-[varbit_1017]
-basevar=varp_528
+[farming_protection_end]
+basevar=farming_state_temp_2
 startbit=0
 endbit=7
 
-[varbit_1018]
-basevar=varp_566
+[farming_growth_probability]
+basevar=farming_growth_data
 startbit=0
 endbit=6
 
-[varbit_1019]
-basevar=varp_566
+[farming_growth_offset_success]
+basevar=farming_growth_data
 startbit=7
 endbit=14
 
-[varbit_1020]
-basevar=varp_566
+[farming_growth_offset_failure]
+basevar=farming_growth_data
 startbit=15
 endbit=22
 
-[varbit_1021]
-basevar=varp_566
+[farming_growth_state_type]
+basevar=farming_growth_data
 startbit=23
 endbit=28
 
-[varbit_1022]
-basevar=varp_566
+[farming_growth_multiplier]
+basevar=farming_growth_data
 startbit=29
 endbit=31
 
-[varbit_1023]
-basevar=varp_566
+[brewing_state_valid]
+basevar=farming_growth_data
 startbit=0
 endbit=0
 
-[varbit_1024]
-basevar=varp_566
+[brewing_multiplier]
+basevar=farming_growth_data
 startbit=1
 endbit=7
 
-[varbit_1025]
-basevar=varp_566
+[brewing_offset_failure_2]
+basevar=farming_growth_data
 startbit=8
 endbit=15
 
-[varbit_1026]
-basevar=varp_566
+[brewing_offset_failure_1]
+basevar=farming_growth_data
 startbit=16
 endbit=23
 
-[varbit_1027]
-basevar=varp_566
+[brewing_offset_success]
+basevar=farming_growth_data
 startbit=24
 endbit=31
 

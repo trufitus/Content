@@ -877,63 +877,63 @@ transmit=yes
 
 [varp_500]
 
-[varp_501]
+[farming_state_temp]
 transmit=yes
 
-[farming_tree_varp]
-transmit=yes
-scope=perm
-
-[farming_fruit_tree_varp]
+[farming_varp_1]
 transmit=yes
 scope=perm
 
-[farming_allotment_varp_1]
+[farming_varp_2]
 transmit=yes
 scope=perm
 
-[farming_allotment_varp_2]
+[farming_varp_3]
 transmit=yes
 scope=perm
 
-[farming_hops_varp]
+[farming_varp_4]
 transmit=yes
 scope=perm
 
-[farming_special_tree_varp]
+[farming_varp_5]
 transmit=yes
 scope=perm
 
-[farming_flower_varp]
+[farming_varp_6]
 transmit=yes
 scope=perm
 
-[farming_bush_varp]
+[farming_varp_7]
+transmit=yes
+scope=perm
+
+[farming_varp_8]
 transmit=yes
 scope=perm
 
 [farming_varp_9]
 transmit=yes
 
-[varp_511]
+[farming_varp_10]
 transmit=yes
 scope=perm
 
-[varp_512]
+[farming_varp_11]
 transmit=yes
 scope=perm
 
-[varp_513]
+[farming_varp_12]
 scope=perm
 
-[varp_514]
+[farming_varp_13]
 scope=perm
 
-[varp_515]
+[farming_varp_14]
 transmit=yes
 scope=perm
 
-[varp_516]
+[farming_varp_15]
 transmit=yes
 scope=perm
 
@@ -964,7 +964,7 @@ transmit=yes
 
 [varp_527]
 
-[varp_528]
+[farming_state_temp_2]
 
 [farming_state_temp_3]
 
@@ -1054,7 +1054,7 @@ transmit=yes
 
 [varp_565]
 
-[varp_566]
+[farming_growth_data]
 
 [varp_567]
 
