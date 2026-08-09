@@ -7618,7 +7618,7 @@ basevar=tzhaar_temp
 startbit=8
 endbit=8
 
-[varbit_1549]
+[tzhaar_fightcave_state]
 basevar=varp_639
 startbit=0
 endbit=5

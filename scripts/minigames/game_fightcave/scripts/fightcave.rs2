@@ -1,0 +1,94 @@
+[queue,tzhaar_fightcave_victory]
+anim(emote_cheer, 0);
+// midi_jingle("arena_wave_complete", 4974);
+p_delay(2);
+p_telejump(0_38_80_6_49); // likely not a fixed tile
+def_int $tokkul_reward = calc(~tzhaar_fightcave_tokkul_reward(%tzhaar_fightcave_state) + 4000);
+inv_add(inv, tzhaar_token, $tokkul_reward);
+
+if (inv_total(inv, tzhaar_cape_fire) = 0 & inv_total(worn, tzhaar_cape_fire) = 0 & inv_total(bank, tzhaar_cape_fire) = 0) {
+    inv_add(inv, tzhaar_cape_fire, 1);
+}
+~chatnpc_specific("TzHaar-Mej-Jal", tzhaar_fightcave_master, "<p,happy>You even defeated TzTok-Jad, I am most impressed! Please accept this gift as a reward.");
+
+[proc,tzhaar_fightcave_tokkul_reward](int $completed_waves)(int)
+return (calc($completed_waves * ($completed_waves + 1)));
+
+[label,tzhaar_fight_cave_init]
+if (p_finduid(uid) = false) return;
+
+%tzhaar_fightcave_state = 0;
+queue(tzhaar_fightcave_march_center, 0, 0);
+queue(tzhaar_fightcave_advance, 0, 0);
+
+[queue,tzhaar_fightcave_march_center]
+p_walk(0_37_79_32_32);
+
+[queue,tzhaar_fightcave_advance]
+%tzhaar_fightcave_state = calc(%tzhaar_fightcave_state + 1);
+mes("spawning wave <tostring(%tzhaar_fightcave_state)>");
+~tzhaar_fightcave_spawn_wave(%tzhaar_fightcave_state);
+
+if (%tzhaar_fightcave_state = 63) {
+    ~chatnpc_specific("TzHaar-Mej-Jal", tzhaar_fightcave_master, "<p,angry>Look out here comes TzTok-Jad!");
+}
+
+[proc,tzhaar_fightcave_spawn_wave](int $wave)
+def_int $i = enum_getoutputcount(tzhaar_fightcave_swarm_npcs);
+
+while ($i > 0) {
+    def_npc $selected_swarm = enum(int, npc, tzhaar_fightcave_swarm_npcs, $i);
+    def_int $weight = calc(pow(2, $i) - 1);
+    
+    def_npc $last_spawn;
+
+    while ($wave >= $weight) {
+        if ($last_spawn = $selected_swarm) {
+            switch_npc ($selected_swarm) {
+                case tzhaar_fightcave_swarm_1a : $selected_swarm = tzhaar_fightcave_swarm_1b;
+                case tzhaar_fightcave_swarm_2a : $selected_swarm = tzhaar_fightcave_swarm_2b;
+                case tzhaar_fightcave_swarm_3a : $selected_swarm = tzhaar_fightcave_swarm_3b;
+                case tzhaar_fightcave_swarm_4a : $selected_swarm = tzhaar_fightcave_swarm_4b;
+                case tzhaar_fightcave_swarm_5a : $selected_swarm = tzhaar_fightcave_swarm_5b;
+            }
+        }
+        ~tzhaar_fightcave_spawn_npc($selected_swarm);
+        $last_spawn = $selected_swarm;
+        $wave = sub($wave, $weight);
+    }
+    $i = sub($i, 1);
+}
+
+[proc,tzhaar_fightcave_spawn_npc](npc $npc)
+def_int $count = enum_getoutputcount(tzhaar_fightcave_spawns);
+def_int $rand = random($count);
+
+def_coord $spawn = enum(int, coord, tzhaar_fightcave_spawns, random($count));
+npc_add($spawn, $npc, ^max_32bit_int);
+%npc_aggressive_player = uid;
+switch_npc (npc_type) {
+    case tzhaar_fightcave_swarm_1a, tzhaar_fightcave_swarm_1b : npc_setmode(opplayer2);
+    case tzhaar_fightcave_swarm_2a, tzhaar_fightcave_swarm_2b : npc_setmode(opplayer2);
+    case tzhaar_fightcave_swarm_4a, tzhaar_fightcave_swarm_4b : npc_setmode(opplayer2);
+    case default : npc_setmode(applayer2);
+}
+
+[debugproc,fcstart]
+if (p_finduid(uid) = false) return;
+%tzhaar_fightcave_state = 0;
+p_teleport(0_37_79_44_60);
+p_walk(0_37_79_36_51);
+queue(tzhaar_fightcave_advance, 0, 0);
+~chatnpc_np_specific("TzHaar-Mej-Jal", tzhaar_fightcave_master, "<p,angry>You're on your own now JalYt, prepare to fight for your life!");
+
+[debugproc,fcspawnwave](int $wave)
+~tzhaar_fightcave_spawn_wave($wave);
+mes("Spawned wave <tostring($wave)>");
+
+[debugproc,fcclearwave]
+npc_huntall(^fightcave_center_coord, 63, 0);
+
+while (npc_findnext = true) {
+    if (nc_category(npc_type) = tzhaar_fightcave_swarm) npc_del;
+}
+mes("Cleared wave");

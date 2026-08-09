@@ -1,0 +1,23 @@
+[ai_opplayer2,tzhaar_fightcave_swarm_1a] @tzhaar_fightcave_swarm_1_attack;
+[ai_opplayer2,tzhaar_fightcave_swarm_1b] @tzhaar_fightcave_swarm_1_attack;
+
+[label,tzhaar_fightcave_swarm_1_attack]
+if (%death = ^true) {
+    npc_setmode(null);
+    return;
+}
+if (%npc_action_delay > map_clock) return;
+if (~npc_check_notcombat = false) {
+    npc_setmode(null);
+    return;
+}
+if (~npc_check_notcombat_self = false) {
+    return;
+}
+anim(%com_defendanim, 0);
+npc_anim(npc_param(attack_anim), 0);
+if (npc_param(attack_sound) ! null) {
+    sound_synth(npc_param(attack_sound), 0, 0);
+}
+~npc_meleeattack;
+stat_drain(prayer, 1, 0);

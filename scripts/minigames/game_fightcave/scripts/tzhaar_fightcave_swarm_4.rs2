@@ -1,0 +1,44 @@
+[ai_opplayer2,tzhaar_fightcave_swarm_4a] @tzhaar_fightcave_swarm_4_attack;
+[ai_opplayer2,tzhaar_fightcave_swarm_4b] @tzhaar_fightcave_swarm_4_attack;
+
+[label,tzhaar_fightcave_swarm_4_attack]
+if (random(4) = 0) { // guessed
+    if (%death = ^true) {
+        npc_setmode(null);
+        return;
+    }
+    if (%npc_action_delay > map_clock) return;
+    if (~npc_check_notcombat = false) {
+        npc_setmode(null);
+        return;
+    }
+    if (~npc_check_notcombat_self = false) {
+        return;
+    }
+    def_npc_uid $self = npc_uid;
+
+    npc_huntall(npc_coord, 1, ^vis_lineofsight); // guessed distance & LoS check, probably needs wider range and a distance to npc check
+
+    // We're intentionally corrupting our active_npc pointer here because there's no .npc_stat & .npc_basestat engine commands
+    while (npc_findnext = true) {
+        // check if the target npc is below half hp...
+        def_int $half_hp = calc(npc_basestat(hitpoints) / 2);
+
+        if (npc_stat(hitpoints) < $half_hp) { // found a candidate to heal!
+            npc_statheal(hitpoints, 10, 0);
+            spotanim_npc(tzhaar_heal, 0, 0);
+
+            if (npc_finduid($self) = false) return; // restore active_npc pointer
+            npc_anim(lizard_cleric_heal, 0);
+            
+            %npc_action_delay = add(map_clock, npc_param(attackrate));
+            ~npc_set_attack_vars;
+            return;
+        }
+    }
+    if (npc_finduid($self) = false) return;
+    // couldn't find any other swarm npc to heal, default to melee attack
+    ~npc_default_attack;
+} else {
+    ~npc_default_attack;
+}

@@ -25,3 +25,6 @@ type=player_uid
 [npc_int2]
 
 [npc_combat_xp_multiplier]
+
+[npc_aggressive_npc]
+type=npc_uid

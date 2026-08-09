@@ -1,0 +1,15 @@
+[ai_opnpc1,tzhaar_fightcave_swarm_boss_cleric]
+
+if (%npc_action_delay > map_clock) return;
+
+npc_anim(lizard_cleric_heal, 0);
+%npc_action_delay = add(map_clock, npc_param(attackrate));
+
+if (npc_finduid(%npc_aggressive_npc) = false) return; // intentionally corrupt active_npc to jad
+
+spotanim_npc(tzhaar_heal, 0, 0);
+npc_statheal(hitpoints, 10, 0);
+
+if (npc_stat(hitpoints) = npc_basestat(hitpoints)) {
+    %npc_int2 = 0; // jad was healed to full, reset cleric spawns
+}

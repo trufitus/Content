@@ -25,8 +25,12 @@ if (~player_npc_hit_roll(%damagetype) = true) {
     if (npc_param(demonbane_vulnerable) = true & inv_total(worn, silverlight) > 0) {
         $maxhit = scale(160, 100, %com_maxhit);
     }
-    if((npc_param(slayer_category) = ^slayer_kurask | npc_param(slayer_category) = ^slayer_turoth) & inv_total(worn, slayer_leafbladed_spear) = 0) {
+    if ((npc_param(slayer_category) = ^slayer_kurask | npc_param(slayer_category) = ^slayer_turoth) & inv_total(worn, slayer_leafbladed_spear) = 0) {
         $maxhit = 0;
+    }
+    if (npc_type = tzhaar_fightcave_swarm_2a | npc_type = tzhaar_fightcave_swarm_2b) {
+        // 'thorns' effect
+        queue(combat_damage_player, 0, 1);
     }
     $damage = randominc(min($maxhit, npc_param(max_dealt)));
     def_int $damage_capped = min($damage, npc_stat(hitpoints));

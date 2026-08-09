@@ -1,0 +1,133 @@
+[ai_applayer2,tzhaar_fightcave_swarm_boss] @tzhaar_fightcave_swarm_boss_attack;
+[ai_opplayer2,tzhaar_fightcave_swarm_boss] npc_setmode(applayer2);
+
+[ai_queue1,tzhaar_fightcave_swarm_boss]
+if (%npc_int2 = 0 & npc_stat(hitpoints) < 150) {
+    npc_say("help!");
+    %npc_int2 = 1;
+
+    ~tzhaar_fightcave_swarm_boss_spawn_cleric(0_37_79_10_15);
+    ~tzhaar_fightcave_swarm_boss_spawn_cleric(0_37_79_10_50);
+    ~tzhaar_fightcave_swarm_boss_spawn_cleric(0_37_79_35_15);
+    ~tzhaar_fightcave_swarm_boss_spawn_cleric(0_37_79_50_25);
+}
+~npc_default_retaliate_ap;
+
+[ai_queue3,tzhaar_fightcave_swarm_boss]
+npc_setmode(none);
+npc_arrivedelay;
+
+if (finduid(%npc_aggressive_player) = true) {
+    ~sound_within_distance(npc_param(death_sound), 0, npc_coord, 12);
+    %lastcombat = null;
+}
+npc_anim(npc_param(death_anim), 0);
+npc_delay(2);
+spotanim_map(tzhaar_inferno, movecoord(npc_coord, 2, 0, 2), 0, 0);
+npc_delay(1);
+npc_del;
+if (finduid(%npc_aggressive_player) = true) {
+    queue(tzhaar_fightcave_victory, 0, 0);
+}
+
+[proc,tzhaar_fightcave_swarm_boss_spawn_cleric](coord $coord)
+.npc_add($coord, tzhaar_fightcave_swarm_boss_cleric, ^max_32bit_int);
+.npc_setmode(opnpc1);
+.%npc_aggressive_npc = npc_uid;
+
+[label,tzhaar_fightcave_swarm_boss_attack]
+if (%npc_action_delay > map_clock) {
+    npc_setmode(applayer2);
+    return;
+}
+if (~npc_check_notcombat = false) {
+    npc_setmode(null);
+    return;
+}
+if (~npc_check_notcombat_self = false) {
+    return;
+}
+
+if (%npc_int = 1) @tzhaar_fightcave_swarm_boss_mage_attack_launch;
+if (%npc_int = 2) @tzhaar_fightcave_swarm_boss_ranged_attack_launch;
+
+if(npc_range(coord) < 2) {
+    if (random(2) = 0) { // guess
+       ~npc_default_attack;
+    } else {
+        @tzhaar_fightcave_swarm_boss_random_attack;
+    }
+} else {
+    @tzhaar_fightcave_swarm_boss_random_attack;
+}
+
+[label,tzhaar_fightcave_swarm_boss_random_attack]
+if (randominc(1) = 0) {
+    @tzhaar_fightcave_swarm_boss_mage_attack_prep;
+} else {
+    @tzhaar_fightcave_swarm_boss_ranged_attack_prep;
+}
+
+[label,tzhaar_fightcave_swarm_boss_mage_attack_prep]
+npc_anim(lordmagmus_fire, 0);
+sound_synth(firebreath, 0, 0);
+
+%npc_action_delay = add(map_clock, 3);
+%npc_int = 1;
+~npc_set_attack_vars;
+
+[label,tzhaar_fightcave_swarm_boss_ranged_attack_prep]
+npc_anim(lordmagmus_smash, 0);
+
+%npc_action_delay = add(map_clock, 3);
+%npc_int = 2;
+~npc_set_attack_vars;
+
+[label,tzhaar_fightcave_swarm_boss_mage_attack_launch]
+// clear the attack 'queue'
+%npc_int = 0;
+%npc_action_delay = add(map_clock, npc_param(attackrate));
+
+def_int $attack_roll = ~npc_magic_attack_roll;
+def_int $defence_roll = ~player_defence_roll_specific(^magic_style);
+
+def_int $duration = ~player_projectile(movecoord(npc_coord, 2, 0, 2), coord, uid, tzhaar_fire_spit_travel, 128, 31, 2, 16, 24, 32, 8);
+~player_projectile(movecoord(npc_coord, 2, 0, 2), coord, uid, tzhaar_fire_spit_follow_travel, 128, 31, 6, 16, 24, 32, 8);
+~player_projectile(movecoord(npc_coord, 2, 0, 2), coord, uid, tzhaar_fire_spit_end_travel, 128, 31, 10, 16, 24, 32, 8);
+
+spotanim_npc(tzhaar_fire_spit_launch, 512, 0);
+sound_synth(firewave_cast_and_fire, 0, 0);
+sound_synth(firewave_hit, 0, $duration);
+
+def_int $damage = randominc(95);
+
+if (~check_protect_prayer(^magic_style) = true | randominc($attack_roll) < randominc($defence_roll)) {
+    $damage = 0;
+}
+
+spotanim_pl(firewave_impact, 0, $duration);
+queue(combat_damage_player, calc($duration / 30), $damage);
+queue*(playerhit_n_retaliate, calc($duration / 30))(npc_uid);
+~npc_set_attack_vars;
+
+[label,tzhaar_fightcave_swarm_boss_ranged_attack_launch]
+// clear the attack 'queue'
+%npc_int = 0;
+%npc_action_delay = add(map_clock, npc_param(attackrate));
+
+def_int $attack_roll = ~npc_ranged_attack_roll;
+def_int $defence_roll = ~player_defence_roll_specific(^ranged_style);
+
+spotanim_map(tzhaar_rock_smash, coord, 92, 0);
+sound_synth(firewave_hit, 0, 0);
+
+def_int $damage = randominc(~npc_ranged_maxhit);
+
+if (~check_protect_prayer(^ranged_style) = true | randominc($attack_roll) < randominc($defence_roll)) {
+    $damage = 0;
+}
+
+spotanim_pl(firewave_impact, 0, 60);
+queue(combat_damage_player, 2, $damage);
+queue*(playerhit_n_retaliate, 2)(npc_uid);
+~npc_set_attack_vars;
